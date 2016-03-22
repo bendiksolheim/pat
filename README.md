@@ -4,7 +4,7 @@ Pat, as in Postman Pat.
 
 ## Install
 
-    git clone (insert repo here) pat
+    git clone https://github.com/bendiksolheim/pat.git
     cd pat
     npm install
 
@@ -17,3 +17,5 @@ Requires two terminals as of now
 
     In the second:
     npm run electron
+
+The app should start automatically, and reload upon js/less/html change. Needs reloading when you change the main process part of the application.
