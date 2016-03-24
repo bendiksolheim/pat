@@ -30,13 +30,13 @@ const Request = ({dispatch, update, request, makeRequest}) => {
                 <button className="btn btn-large btn-default" type="button" onClick={get}>
                     <span>GET</span>
                 </button>
-                <button className="btn btn-large btn-default" type="button">
+                <button className="btn btn-large btn-disabled" type="button" disabled>
                     <span>POST</span>
                 </button>
-                <button className="btn btn-large btn-default" type="button">
+                <button className="btn btn-large btn-disabled" type="button" disabled>
                     <span>PUT</span>
                 </button>
-                <button className="btn btn-large btn-default" type="button">
+                <button className="btn btn-large btn-disabled" type="button" disabled>
                     <span>DELETE</span>
                 </button>
             </div>
