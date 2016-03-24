@@ -6,10 +6,11 @@ function ajaxRequest() {
     };
 }
 
-function ajaxReceive(response) {
+function ajaxReceive(response, body) {
     return {
         type: c.AJAX_RECEIVE,
-        response
+        response,
+        body
     };
 }
 
@@ -32,8 +33,9 @@ export function makeRequest(request) {
 
         return fetch(createRequestObject(request))
             .then(function(response) {
-                console.log(arguments);
-                dispatch(ajaxReceive(response));
+                response.json().then(function(body) {
+                    dispatch(ajaxReceive(response, body));
+                });
             })
             .catch(function(ex) {
                 console.log(arguments);
