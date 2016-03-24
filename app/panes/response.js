@@ -7,12 +7,28 @@ function mapStateToProps(state) {
     };
 }
 
+function responseIcon(ok) {
+    return ok
+        ? 'icon icon-check'
+        : 'icon icon-cancel';
+}
+
+const Statistics = ({ajax}) => (
+    <div className='response-stats'>
+        <span className={ responseIcon(ajax.response.ok) }></span><div className='response-stats__status'>{ajax.response.status}</div>
+        <span className="icon icon-clock"></span><div className='response-stats__time'>{ajax.end - ajax.start}ms</div>
+    </div>
+);
+
 const NoRequest = () => (
     <div></div>
 );
 
 const JsonResponse = (ajax) => (
-    <ObjectInspector data={ajax.response.body} expandLevel={10} />
+    <div>
+        <Statistics ajax={ajax} />
+        <ObjectInspector data={ajax.responseBody} expandLevel={10} />
+    </div>
 );
 
 const Response = ({ ajax }) => {
