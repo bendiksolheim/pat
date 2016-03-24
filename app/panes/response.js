@@ -7,10 +7,25 @@ function mapStateToProps(state) {
     };
 }
 
-const Response = ({ ajax }) => (
-    <div className="padded-more">
-        <ObjectInspector data={ajax.response.body} expandLevel={10}/>
-    </div>
+const NoRequest = () => (
+    <div></div>
 );
+
+const JsonResponse = (ajax) => (
+    <ObjectInspector data={ajax.response.body} expandLevel={10} />
+);
+
+const Response = ({ ajax }) => {
+    let response = NoRequest();
+    if (ajax.hasResponse) {
+        response = JsonResponse(ajax);
+    }
+
+    return (
+        <div className='padded-more'>
+            {response}
+        </div>
+    );
+};
 
 export default connect(mapStateToProps)(Response);
