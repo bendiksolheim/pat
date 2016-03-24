@@ -1,4 +1,5 @@
 import { connect } from 'react-redux';
+import { ObjectInspector } from 'react-inspector';
 
 function mapStateToProps(state) {
     return {
@@ -8,11 +9,7 @@ function mapStateToProps(state) {
 
 const Response = ({ ajax }) => (
     <div className="padded-more">
-        <form>
-            <div className="form-group">
-                <textarea className="form-control" readOnly value={JSON.stringify(ajax.response.body)} />
-            </div>
-        </form>
+        <ObjectInspector data={ajax.response.body} expandLevel={10}/>
     </div>
 );
 
