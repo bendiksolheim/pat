@@ -22,7 +22,7 @@ const Request = ({dispatch, update, request, makeRequest}) => {
     const get = () => makeRequest(createRequestObject('get', request));
 
     return (
-        <form className="padded-more">
+        <div className="padded-more">
             <div className="form-group">
                 <input type="text" className="form-control" placeholder="URL" onBlur={handleUpdate} />
             </div>
@@ -40,7 +40,7 @@ const Request = ({dispatch, update, request, makeRequest}) => {
                     <span>DELETE</span>
                 </button>
             </div>
-        </form>
+        </div>
     );
 };
 
