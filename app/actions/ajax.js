@@ -21,8 +21,15 @@ function ajaxFail(response) {
     };
 }
 
+function getUrl(url) {
+    return url.indexOf('http') === 0
+        ? url
+        : `http://${url}`;
+}
+
 function createRequestObject(request) {
-    return new Request(request.url, {
+    const url = getUrl(request.url.trim());
+    return new Request(url, {
         method: request.method
     });
 }
