@@ -2,6 +2,26 @@
 // Buttons.css
 // --------------------------------------------------
 
+.button {
+    outline: 0;
+    &--header {
+        .linear-gradient(#fefefe, #f1f1f1);
+        border-radius: @default-border-radius;
+        border-width: 1px;
+        border-style: solid;
+        border-left-color: #c6c5c6;
+        border-bottom-color: #a2a1a2;
+        border-right-color: #c6c5c6;
+        border-top-color: #cdcbcd;
+        font-size: .9rem;
+        height: 23px;
+
+        &:active {
+            .linear-gradient(#e5e5e5, #dbdbdb);
+        }
+    }
+}
+
 .btn {
   display: inline-block;
   padding: 3px 8px;

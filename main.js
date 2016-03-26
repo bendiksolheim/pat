@@ -10,7 +10,7 @@ app.on('ready', () => {
     mainWindow = new BrowserWindow({
         width: 1024,
         height: 768,
-        'title-bar-style': 'hidden'
+        'title-bar-style': 'hidden-inset'
     });
     mainWindow.loadURL(`file://${__dirname}/static/index.html`);
     mainWindow.openDevTools();

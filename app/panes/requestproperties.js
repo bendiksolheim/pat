@@ -22,11 +22,8 @@ const Request = ({dispatch, update, request, makeRequest}) => {
     const get = () => makeRequest(createRequestObject('get', request));
 
     return (
-        <div className="request">
-            <div className="form-group form-group--header">
-                <input type="text" className="input input--header request-input" placeholder="URL" onBlur={handleUpdate} value={request.url} />
-            </div>
-            <button className="button button--header" onClick={get}>GET</button>
+        <div className="padded-more">
+            Headers
         </div>
     );
 };

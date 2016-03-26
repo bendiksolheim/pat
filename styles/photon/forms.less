@@ -40,6 +40,38 @@ input[type="checkbox"] {
   }
 }
 
+.input {
+    background-color: @chrome-color;
+    border: 1px solid @border-color;
+    border-radius: @default-border-radius;
+    outline: none;
+    padding: 0 5px;
+
+    &--default {
+    }
+
+    &--header {
+        .linear-gradient(#fdfdfd, #f0f0f0);
+        border-left-color: #bdbcbd;
+        border-bottom-color: #9e9d9e;
+        border-right-color: #bdbcbd;
+        border-top-color: #c8c6c8;
+        border-radius: @default-border-radius;
+        font-size: .9rem;
+        height: 23px;
+        text-align: center;
+
+        &:focus {
+            text-align: left;
+        }
+    }
+
+    &:focus {
+        border-color: @focus-input-color;
+        box-shadow: 0 0 0 3px @focus-input-color;
+    }
+}
+
 // Reset height for `textarea`s
 textarea {
   height: auto;
@@ -52,6 +84,10 @@ textarea {
 
 .form-group {
   margin-bottom: 10px;
+
+  &--header {
+    margin-bottom: 0;
+  }
 }
 
 // Checkboxes and radios

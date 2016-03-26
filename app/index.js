@@ -6,16 +6,24 @@ import store from './store';
 import PaneGroup from './components/panegroup';
 import Pane from './components/pane';
 import MainPane from './panes/main';
+import Request from './panes/request';
 
 const App = React.createClass({
     render() {
         return (
-            <PaneGroup>
-                <Pane sidebar={true} />
-                <Pane>
-                    <MainPane />
-                </Pane>
-            </PaneGroup>
+            <div className="window">
+                <header className="toolbar toolbar-header">
+                    <Request />
+                </header>
+                <div className="window-content">
+                    <PaneGroup>
+                        <Pane sidebar={true} />
+                        <Pane>
+                            <MainPane />
+                        </Pane>
+                    </PaneGroup>
+                </div>
+            </div>
         );
     }
 });

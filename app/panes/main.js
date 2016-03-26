@@ -1,9 +1,9 @@
-import Request from './request';
+import RequestProperties from './requestproperties';
 import Response from './response';
 
 const MainPane = () => (
     <div>
-        <Request />
+        <RequestProperties />
         <Response />
     </div>
 );
