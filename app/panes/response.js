@@ -13,6 +13,14 @@ function responseIcon(ok) {
         : 'icon icon-cancel';
 }
 
+function display(ajax) {
+    if (ajax.hasResponse) {
+        return JsonResponse(ajax);
+    } else {
+        return NoRequest();
+    }
+}
+
 const Statistics = ({ajax}) => (
     <div className='response-stats'>
         <div className='response-stats__status'>
@@ -37,13 +45,6 @@ const JsonResponse = (ajax) => (
     </div>
 );
 
-const Response = ({ ajax }) => {
-    let response = NoRequest();
-    if (ajax.hasResponse) {
-        response = JsonResponse(ajax);
-    }
-
-    return response;
-};
+const Response = ({ ajax }) => display(ajax);
 
 export default connect(mapStateToProps)(Response);

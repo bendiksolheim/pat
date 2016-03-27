@@ -17,7 +17,6 @@ function mapStateToProps(state) {
 }
 
 const Request = ({dispatch, update, request, makeRequest}) => {
-    console.log(request);
     const handleUpdate = (ev) => update('url', ev.target.value);
     const get = () => makeRequest(createRequestObject('get', request));
 

@@ -10,9 +10,19 @@ export function update(name, value) {
     };
 }
 
+export function updateHeader(id, header, value) {
+    return function(dispatch) {
+        dispatch({
+            type: c.REQUEST_UPDATE_HEADER,
+            id,
+            header,
+            value
+        });
+    };
+}
+
 export function request(verb) {
-    return function(dispatch, getState) {
-        console.log(getState());
+    return function(dispatch) {
         dispatch({
             type: c.REQUEST_MAKE_REQUEST,
             verb

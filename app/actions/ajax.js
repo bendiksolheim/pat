@@ -27,10 +27,18 @@ function getUrl(url) {
         : `http://${url}`;
 }
 
+function toHeaders(headerArray) {
+    return headerArray.reduce((mem, {header, value}) => {
+        mem[header] = value;
+        return mem;
+    }, {});
+}
+
 function createRequestObject(request) {
     const url = getUrl(request.url.trim());
     return new Request(url, {
-        method: request.method
+        method: request.method,
+        headers: toHeaders(request.headers)
     });
 }
 
@@ -45,7 +53,6 @@ export function makeRequest(request) {
                 });
             })
             .catch(function(ex) {
-                console.log(arguments);
                 dispatch(ajaxFail(ex));
             });
     }
