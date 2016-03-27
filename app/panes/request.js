@@ -17,14 +17,14 @@ function mapStateToProps(state) {
 }
 
 const Request = ({dispatch, update, request, makeRequest}) => {
-
+    console.log(request);
     const handleUpdate = (ev) => update('url', ev.target.value);
     const get = () => makeRequest(createRequestObject('get', request));
 
     return (
         <div className="request">
             <div className="form-group form-group--header">
-                <input type="text" className="input input--header request-input" placeholder="URL" onBlur={handleUpdate} value={request.url} />
+                <input type="text" className="input input--header request-input" placeholder="URL" onBlur={handleUpdate} />
             </div>
             <button className="button button--header" onClick={get}>GET</button>
         </div>
