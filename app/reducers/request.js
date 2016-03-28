@@ -19,6 +19,25 @@ function updateHeader(action) {
     }
 }
 
+function updateHeaders(action, state) {
+    const headers = state.headers.map(updateHeader(action));
+    const hasEmptyInputs = headers.some((header) => (
+        header.header == '' && header.value == ''
+    ));
+    if (!hasEmptyInputs) {
+        const id = headers[headers.length - 1].id + 1;
+        headers.push({id: id, header: '', value: ''});
+    }
+    return headers;
+}
+
+function addHeader(headers) {
+    const copy = headers.slice();
+    const id = copy[copy.length - 1].id + 1;
+    copy.push({id: id, header: '', value: ''});
+    return copy;
+}
+
 export default (state = initialState, action) => {
     switch (action.type) {
     case c.REQUEST_UPDATE_VALUE:
@@ -27,7 +46,7 @@ export default (state = initialState, action) => {
         });
     case c.REQUEST_UPDATE_HEADER:
         return update(state, {
-            headers: { $set: state.headers.map(updateHeader(action)) }
+            headers: { $set: updateHeaders(action, state) }
         });
     default:
         return state;
