@@ -23,7 +23,7 @@ const Request = ({dispatch, update, request, makeRequest}) => {
     return (
         <div className="request">
             <div className="form-group form-group--header">
-                <input type="text" className="input input--header request-input" placeholder="URL" onBlur={handleUpdate} />
+                <input type="text" className="input input--header request-input" placeholder="URL" onChange={handleUpdate} value={request.url} />
             </div>
             <button className="button button--header" onClick={get}>GET</button>
         </div>
