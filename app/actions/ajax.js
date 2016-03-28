@@ -50,9 +50,13 @@ export function makeRequest(request) {
 
         return fetch(createRequestObject(request))
             .then(function(response) {
-                response.json().then(function(body) {
-                    dispatch(ajaxReceive(response, body));
-                });
+                if (!response.ok) {
+                    dispatch(ajaxFail(response));
+                } else {
+                    response.json().then(function(body) {
+                        dispatch(ajaxReceive(response, body));
+                    });
+                }
             })
             .catch(function(ex) {
                 dispatch(ajaxFail(ex));
