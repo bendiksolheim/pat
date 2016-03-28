@@ -17,8 +17,8 @@ function mapStateToProperties(state) {
 }
 
 const Header = connect(mapStateToProperties, {updateHeader})(({updateHeader, header, value, id}) => {
-    const editHeader = (ev) => updateHeader(ev.target.dataset.id, ev.target.value, null);
-    const editValue = (ev) => updateHeader(ev.target.dataset.id, null, ev.target.value);
+    const editHeader = (ev) => updateHeader(ev.target.dataset.id, ev.target.value, value);
+    const editValue = (ev) => updateHeader(ev.target.dataset.id, header, ev.target.value);
 
     return (
         <li className='request__header'>

@@ -8,8 +8,6 @@ const initialState = {
     ]
 };
 
-const isNull = (v) => v === null;
-
 export default (state = initialState, action) => {
     switch (action.type) {
     case c.REQUEST_UPDATE_VALUE:
@@ -20,7 +18,7 @@ export default (state = initialState, action) => {
         return update(state, {
             headers: {$set: state.headers.map((header) => {
                 if (header.id === action.id) {
-                    return {id: header.id, header: isNull(action.header) ? header.header : action.header, value: isNull(action.value) ? header.value : action.value};
+                    return {id: header.id, header: action.header, value: action.value};
                 } else {
                     return header;
                 }
