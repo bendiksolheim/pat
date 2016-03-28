@@ -29,7 +29,9 @@ function getUrl(url) {
 
 function toHeaders(headerArray) {
     return headerArray.reduce((mem, {header, value}) => {
-        mem[header] = value;
+        if (header !== '' && value != '') {
+            mem[header] = value;
+        }
         return mem;
     }, {});
 }
