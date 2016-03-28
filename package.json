@@ -4,8 +4,8 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "watch-js": "watchify app/index.js -o static/app.js -t [babelify]",
-    "build-js": "browserify app/index.js -o static/app.js -t [babelify]",
+    "watch-js": "watchify -d app/index.js -o static/app.js -t [babelify]",
+    "build-js": "browserify -d app/index.js -o static/app.js -t [babelify]",
     "watch-less": "wr 'npm run build-less' styles/",
     "build-less": "lessc styles/index.less static/index.css",
     "build": "npm run build-js && npm run build-less",
