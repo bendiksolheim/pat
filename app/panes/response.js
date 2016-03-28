@@ -16,6 +16,8 @@ function responseIcon(ok) {
 function display(ajax) {
     if (ajax.hasResponse) {
         return JsonResponse(ajax);
+    } else if (ajax.failed) {
+        return FailResponse(ajax);
     } else {
         return NoRequest();
     }
@@ -41,6 +43,15 @@ const JsonResponse = (ajax) => (
         <Statistics ajax={ajax} />
         <div className='padded-more'>
             <ObjectInspector data={ajax.responseBody} expandLevel={10} />
+        </div>
+    </div>
+);
+
+const FailResponse = (ajax) => (
+    <div>
+        <Statistics ajax={ajax} />
+        <div className='padded-more'>
+            {ajax.response.statusText}
         </div>
     </div>
 );
