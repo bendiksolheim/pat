@@ -41,4 +41,4 @@ const Request = ({dispatch, update, updateHeader, request, makeRequest}) => {
     );
 };
 
-export default connect((state) => ({request: state.request}), {makeRequest, update, updateHeader})(Request);
+export default connect((state) => ({request: state.request}), {makeRequest, update})(Request);
