@@ -17,7 +17,7 @@ export default (state = initialState, action) => {
     case c.AJAX_RECEIVE:
         return Object.assign({}, state, {isFetching: false, response: action.response, responseBody: action.body, hasResponse: true, end: Date.now()});
     case c.AJAX_FAIL:
-        return Object.assign({}, state, {isFetching: false, response: action.response, failed: true});
+        return Object.assign({}, state, {isFetching: false, response: action.response, failed: true, end: Date.now()});
     default:
         return state;
     }
