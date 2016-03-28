@@ -16,25 +16,24 @@ function mapStateToProperties(state) {
     };
 }
 
-const Header = connect(mapStateToProperties, {updateHeader})(({updateHeader, header, value, id}) => {
+const Header = connect(mapStateToProperties, {updateHeader})(({updateHeader, header, value, headerid}) => {
     const editHeader = (ev) => updateHeader(ev.target.dataset.id, ev.target.value, value);
     const editValue = (ev) => updateHeader(ev.target.dataset.id, header, ev.target.value);
 
     return (
         <li className='request__header'>
-            <input className='request__header-key' value={header} data-id={id} onChange={editHeader} placeholder='Header' />
-            <input className='request__header-value' value={value} data-id={id} onChange={editValue} placeholder='Value' />
+            <input className='request__header-key' value={header} data-id={headerid} onChange={editHeader} placeholder='Header' />
+            <input className='request__header-value' value={value} data-id={headerid} onChange={editValue} placeholder='Value' />
         </li>
     );
 });
 
-const Request = ({dispatch, update, updateHeader, request, makeRequest}) => {
-
+const Request = ({dispatch, update, request, makeRequest}) => {
     return (
         <div className="padded-more">
             <ul className='request__headers'>
                 {request.headers.map(({header, value, id}) => (
-                    <Header header={header} value={value} id={id} key={id}/>
+                    <Header header={header} value={value} headerid={id} key={id}/>
                 ))}
             </ul>
         </div>
