@@ -1,5 +1,9 @@
 import { connect } from 'react-redux';
-import { ObjectInspector } from 'react-inspector';
+import brace from 'brace';
+import AceEditor from 'react-ace';
+
+import 'brace/mode/json';
+import 'brace/theme/github';
 
 function mapStateToProps(state) {
     return {
@@ -35,22 +39,20 @@ const Statistics = ({ajax}) => (
 );
 
 const NoRequest = () => (
-    <div></div>
+    <div className='response'></div>
 );
 
 const JsonResponse = (ajax) => (
-    <div>
+    <div className='response'>
         <Statistics ajax={ajax} />
-        <div className='padded-more'>
-            <ObjectInspector data={ajax.responseBody} expandLevel={10} />
-        </div>
+        <AceEditor mode='json' theme='github' name='responsebody' className='response__body' width='100%' height='100px' value= { JSON.stringify(ajax.responseBody, null, 4) }/>
     </div>
 );
 
 const FailResponse = (ajax) => (
-    <div>
+    <div className='response'>
         <Statistics ajax={ajax} />
-        <div className='padded-more'>
+        <div className='padded-more response__body'>
             {ajax.response.statusText}
         </div>
     </div>
