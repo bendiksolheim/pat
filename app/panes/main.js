@@ -2,7 +2,7 @@ import RequestProperties from './requestproperties';
 import Response from './response';
 
 const MainPane = () => (
-    <div>
+    <div className='main'>
         <RequestProperties />
         <Response />
     </div>

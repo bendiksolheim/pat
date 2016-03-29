@@ -18,7 +18,7 @@ const App = React.createClass({
                 <div className="window-content">
                     <PaneGroup>
                         <Pane sidebar={true} />
-                        <Pane>
+                        <Pane className='pane--main'>
                             <MainPane />
                         </Pane>
                     </PaneGroup>
