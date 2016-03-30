@@ -6,14 +6,6 @@ import AceEditor from 'react-ace';
 import 'brace/mode/json';
 import 'brace/theme/github';
 
-function handleChange(dispatch) {
-    return (event) => dispatch(update('url', event.target.value));
-}
-
-function createRequestObject(method, request) {
-    return Object.assign({}, request, { method });
-}
-
 function mapStateToProperties(state) {
     return {
         request: state.request
@@ -40,17 +32,15 @@ const Body = connect(mapStateToProperties, {update})(({update, request}) => {
     );
 });
 
-const Request = ({dispatch, update, request, makeRequest}) => {
-    return (
-        <div className="padded-more">
-            <ul className='request__headers'>
-                {request.headers.map(({header, value, id}) => (
-                    <Header header={header} value={value} headerid={id} key={id}/>
-                ))}
-            </ul>
-            <Body />
-        </div>
-    );
-};
+const Request = ({request}) => (
+    <div className="padded-more">
+        <ul className='request__headers'>
+            {request.headers.map(({header, value, id}) => (
+                <Header header={header} value={value} headerid={id} key={id}/>
+            ))}
+        </ul>
+        <Body />
+    </div>
+);
 
-export default connect((state) => ({request: state.request}), {makeRequest, update})(Request);
+export default connect(mapStateToProperties)(Request);
