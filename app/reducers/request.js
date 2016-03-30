@@ -2,7 +2,7 @@ import * as c from '../actions/constants';
 import update from 'react/lib/update';
 
 const initialState = {
-    url: 'http://headers.jsontest.com',
+    url: 'https://httpbin.org/headers',
     headers: [
         {id: '0', header:'Authorization', value:'test'},
         {id: '1', header:'', value:''}
