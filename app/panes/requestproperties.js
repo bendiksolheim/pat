@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 import { update, updateHeader } from '../actions/request';
 import { makeRequest } from '../actions/ajax';
+import AceEditor from 'react-ace';
+
+import 'brace/mode/json';
+import 'brace/theme/github';
 
 function handleChange(dispatch) {
     return (event) => dispatch(update('url', event.target.value));
@@ -28,6 +32,14 @@ const Header = connect(mapStateToProperties, {updateHeader})(({updateHeader, hea
     );
 });
 
+const Body = connect(mapStateToProperties, {update})(({update, request}) => {
+    const updateBody = (newValue) => update('body', newValue);
+
+    return (
+        <AceEditor mode='json' theme='github' name='requestbody' className='request__body' width='100%' height='100px' onChange={updateBody} value={request.body} showPrintMargin={false}/>
+    );
+});
+
 const Request = ({dispatch, update, request, makeRequest}) => {
     return (
         <div className="padded-more">
@@ -36,6 +48,7 @@ const Request = ({dispatch, update, request, makeRequest}) => {
                     <Header header={header} value={value} headerid={id} key={id}/>
                 ))}
             </ul>
+            <Body />
         </div>
     );
 };

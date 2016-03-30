@@ -6,7 +6,8 @@ const initialState = {
     headers: [
         {id: '0', header:'Authorization', value:'test'},
         {id: '1', header:'', value:''}
-    ]
+    ],
+    body: ''
 };
 
 function updateHeader(action) {
