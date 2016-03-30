@@ -19,6 +19,7 @@ function mapStateToProps(state) {
 const Request = ({dispatch, update, request, makeRequest}) => {
     const handleUpdate = (ev) => update('url', ev.target.value);
     const get = () => makeRequest(createRequestObject('get', request));
+    const post = () => makeRequest(createRequestObject('post', request));
 
     return (
         <div className="request">
@@ -26,6 +27,7 @@ const Request = ({dispatch, update, request, makeRequest}) => {
                 <input type="text" className="input input--header request-input" placeholder="URL" onChange={handleUpdate} value={request.url} />
             </div>
             <button className="button button--header" onClick={get}>GET</button>
+            <button className='button button--header' onClick={post}>POST</button>
         </div>
     );
 };

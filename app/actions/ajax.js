@@ -36,12 +36,26 @@ function toHeaders(headerArray) {
     }, {});
 }
 
+function getRequestOptions(request) {
+    const requestOptions = {
+        method: request.method
+    };
+
+    if (request.headers) {
+        requestOptions.headers = toHeaders(request.headers);
+    }
+
+    if (request.body) {
+        requestOptions.body = request.body;
+    }
+
+    return requestOptions;
+}
+
 function createRequestObject(request) {
     const url = getUrl(request.url.trim());
-    return new Request(url, {
-        method: request.method,
-        headers: toHeaders(request.headers)
-    });
+    const requestOptions = getRequestOptions(request);
+    return new Request(url, requestOptions);
 }
 
 export function makeRequest(request) {
